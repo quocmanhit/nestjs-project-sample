@@ -1,0 +1,14 @@
+# Cập nhật lên Node.js 20 (ĐÚNG)
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Cài dependencies
+COPY package.json yarn.lock ./
+RUN yarn install
+
+# Copy tất cả source code vào
+COPY . .
+
+# Chạy ở chế độ development với hot reload
+CMD ["npm", "run", "start:dev"]
